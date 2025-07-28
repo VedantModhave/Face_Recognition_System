@@ -1,6 +1,8 @@
 # Face Recognition System
 
-This repository provides a PyTorch implementation of [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641) and a pipeline for face detection and recognition using ONNX and PyTorch.
+This repository provides a PyTorch implementation of [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641) and a pipeline for face detection and recognition using Facenet512 ONNX and PyTorch.
+
+It uses the **facenet512** model for face recognition and **RetinaFace** for face detection.
 
 ## Features
 
