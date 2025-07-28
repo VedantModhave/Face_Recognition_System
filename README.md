@@ -1,4 +1,4 @@
-# RetinaFace Face Recognition System
+# Face Recognition System
 
 This repository provides a PyTorch implementation of [RetinaFace: Single-stage Dense Face Localisation in the Wild](https://arxiv.org/abs/1905.00641) and a pipeline for face detection and recognition using ONNX and PyTorch.
 
@@ -13,16 +13,15 @@ This repository provides a PyTorch implementation of [RetinaFace: Single-stage D
 ```
 Pytorch_Retinaface/
 │
-├── face.py                
-├── detect.py              
-├── facenet512.onnx        
+├── face.py                # Main script for face detection & recognition
+├── requirements.txt       # Python dependencies
+├── facenet512.onnx        # FaceNet ONNX model for embeddings
 ├── weights/
-│   └── Resnet50_Final.pth 
+│   └── Resnet50_Final.pth # Pretrained RetinaFace weights
 ├── data/
-│   └── config.py          
+│   └── config.py          # Model configuration
 ├── models/
-│   └── retinaface.py
-|   └── net.py      
+│   └── retinaface.py      # RetinaFace model definition
 ├── layers/
 │   └── functions/
 │       └── prior_box.py
@@ -39,30 +38,35 @@ Pytorch_Retinaface/
 
 1. **Clone the repository**
     ```sh
-    git clone https://github.com/biubug6/Pytorch_Retinaface.git
-    cd Pytorch_Retinaface
+    git clone https://github.com/VedantModhave/Face_Recognition_System
+    cd Face_Recognition_System
     ```
 
 2. **Install dependencies**
     ```sh
-    pip install torch torchvision onnxruntime opencv-python tqdm numpy
+    pip install -r requirements.txt
     ```
 
-3. **Download Pretrained Weights**
-    - Ensure `weights/Resnet50_Final.pth` is present. If not, download from the official [RetinaFace model zoo](https://github.com/biubug6/Pytorch_Retinaface#training) or [Google Drive link](https://drive.google.com/open?id=1oZRSG0ZegbVkVwUd8wUIQx8W7yfZ_ki1).
-    - Ensure `facenet512.onnx` is present in the root directory.
+3. **Download Pretrained Weights and ONNX Model**
+    - **Create the `weights` folder** if it does not exist:
+      ```sh
+      mkdir weights
+      ```
+    - **Download the following files from [this Google Drive folder](https://drive.google.com/drive/folders/1jI_eCLQaDFVrl_xQ9OQtjqPZpFQmveuc?usp=sharing):**
+        - `Resnet50_Final.pth` &rarr; Place inside the `weights/` folder.
+        - `facenet512.onnx` &rarr; Place in the root directory (Face_Recognition_System/`).
 
 ## Usage
 
 ### 1. Prepare Your Data
 
-- Place your reference image (e.g., `examples/1.jpg`) and video file (e.g., `examples/1.mp4`) in the `examples/` folder.
+- Place your reference image (e.g., `examples/4.jpeg`) and video file (e.g., `examples/4.mp4`) in the `examples/` folder.
 
 ### 2. Run Face Recognition
 
 #### **To use GPU (default, if available):**
 ```sh
-python face.py --image images/1.jpg --video images/1.mp4
+python face.py --image examples/4.jpeg --video examples/4.mp4
 ```
 - The script will automatically use GPU if a CUDA-capable device and CUDA-enabled PyTorch are installed.
 
@@ -70,11 +74,11 @@ python face.py --image images/1.jpg --video images/1.mp4
 On **Windows**:
 ```sh
 set CUDA_VISIBLE_DEVICES=
-python face.py --image images/1.jpg --video images/1.mp4
+python face.py --image examples/4.jpeg --video examples/4.mp4
 ```
 On **Linux/macOS**:
 ```sh
-CUDA_VISIBLE_DEVICES= python face.py --image images/1.jpg --video images/1.mp4
+CUDA_VISIBLE_DEVICES= python face.py --image examples/4.jpeg --video examples/4.mp4
 ```
 Or, you can edit [`face.py`](face.py) and set:
 ```python
@@ -97,3 +101,7 @@ DEVICE = "cpu"
 - By default, RetinaFace uses the ResNet50 backbone. You can change this in [`face.py`](face.py) by modifying `RETINAFACE_NETWORK`.
 - Detection and recognition thresholds can be adjusted in [`face.py`](face.py) for your use case.
 - For best results, use clear, frontal reference images.
+
+## References
+
+- [RetinaFace (original repo)](https://github.com/biubug6/Pytorch_Retinaface)
