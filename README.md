@@ -7,7 +7,7 @@ It uses the **Facenet512** model for face recognition and **RetinaFace** for fac
 ## Features
 
 - Face detection using RetinaFace (ResNet50 or MobileNet0.25 backbone)
-- Face recognition using FaceNet (ONNX)
+- Face recognition using FaceNet512 (ONNX)
 - Video processing to find and timestamp appearances of a reference face
 
 ## Folder Structure
