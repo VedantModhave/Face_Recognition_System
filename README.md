@@ -15,21 +15,21 @@ It uses the **Facenet512** model for face recognition and **RetinaFace** for fac
 ```
 Pytorch_Retinaface/
 │
-├── face.py                # Main script for face detection & recognition
-├── requirements.txt       # Python dependencies
-├── facenet512.onnx        # FaceNet ONNX model for embeddings
+├── face.py                
+├── requirements.txt       
+├── facenet512.onnx        
 ├── weights/
-│   └── Resnet50_Final.pth # Pretrained RetinaFace weights
+│   └── Resnet50_Final.pth 
 ├── data/
-│   └── config.py          # Model configuration
+│   └── config.py          
 ├── models/
-│   └── retinaface.py      # RetinaFace model definition
+│   └── retinaface.py      
 ├── layers/
 │   └── functions/
 │       └── prior_box.py
 ├── utils/
 │   └── box_utils.py
-├── examples/                # Place your images and videos here
+├── examples/                
 │   ├── 4.jpeg
 │   ├── 4.mp4
 │   └── ...
